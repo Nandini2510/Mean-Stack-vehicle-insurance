@@ -1,0 +1,78 @@
+<html> 
+<head>
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+     
+     <link rel="stylesheet" href='../styling/home.css'/>
+     <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+ </head> 
+
+<body ng-app="view" ng-controller='viewCtrl' ng-init="response=''">
+    <header>
+        <div class="container">
+             <div id="branding">
+                 <h1><span class="highlight">Vehicle</span> Insurance</h1>
+             </div>
+             <nav>
+                 <ul>
+                     <li ><a href="home.html">Home</a></li>
+                     <li><a href="insert.html">Buy Policy</a></li>
+                     <li class="current"><a href="view.html">Display Policy</a></li>
+                     <li><a href="update.html">Renew Policy</a></li>
+                     <li><a href="delete.html">Delete Policy</a></li>
+                 </ul>
+             </nav>
+        </div>
+    </header>
+<!-- <img id="img2" src="../images/img2.webp"> -->
+<section>
+    <ul id="formstyle">
+        <li>
+<br><center><button ng-click="viewAll()" class="btn">Display All Insurance</button></center><br/>
+<div class="id"><b>ID of the user to view the policy:</b><input type="text" ng-model="data.id"/>
+<button ng-click="viewId()" class="btn">Submit</button><br/><br></div><br>
+<!-- <div class="name"><b>Enter the name of the person to view:</b><input type="text" ng-model="data.name"/>
+<button ng-click="viewCity()" class="btn">View by person</button></div><br> -->
+
+<div class="all" ng-if="response.data=='Record with this id does not exist'">{{response.data}}</div>
+<div class="all" ng-if="response.data=='No records with this name are present!'">{{response.data}}</div>
+<div class="all" ng-if="response.data=='Error in database access'">{{response.data}}</div>
+<div ng-if="response.data!='Record with this id does not exist' && response.data!='No records with this name is present!' && response.data!='Error in database access'">
+</li>
+</ul>
+   <br> <table cellpadding="0" cellspacing="0" class="table table-striped table-bordered table-hover" id="tabledisplay">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Contact</th>
+            <th>Policy Details</th>
+        </tr>
+        <tbody ng-repeat="d in response.data">
+            <tr>
+                <td>{{d.id}}</td>
+                <td>{{d.name}}</td>
+                <td>{{d.contact}}</td>
+                <td>
+                    <table cellpadding="0" cellspacing="0" class="table table-striped table-bordered table-hover">
+                        <tr>
+                            <th>Insurance for Car or Bike?</th>
+                            <th>Company of Insurance</th>
+                            <th>Term of Insurance</th>
+                        </tr>
+                        <tbody ng-repeat="t in d.list">
+                        <tr>
+                            <td>{{t.type}}</td>
+                            <td>{{t.comp}}</td>
+                            <td>{{t.term}} Years</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+</div>
+        
+        <script src="../controllers/view.js"></script>
+</body>  
+</html>

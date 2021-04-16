@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+     <link rel="stylesheet" href='../styling/home.css'/>
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>
+     <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+</head>
+
+<body ng-app="delete" ng-controller='deleteCtrl' ng-init="response=''">
+   
+    <header>
+        <div class="container">
+             <div id="branding">
+                 <h1><span class="highlight">Vehicle</span> Insurance</h1>
+             </div>
+             <nav>
+                 <ul>
+                     <li ><a href="home.html">Home</a></li>
+                     <li><a href="insert.html">Buy Policy</a></li>
+                     <li><a href="view.html">Display Policy</a></li>
+                     <li><a href="update.html">Renew Policy</a></li>
+                     <li class="current"><a href="delete.html">Delete Policy</a></li>
+                 </ul>
+             </nav>
+        </div>
+    </header>
+
+    <form ng-submit="delete()"><br>
+    <label for="id" >Enter ID to be deleted: </label>
+    <input type="text" id="id" ng-model="data.id" required/> <br>
+    <input type="submit" value="Submit"/>
+    </form>
+
+    <br><br><br><br>
+    <p class="btn" style="width: 650px">
+       <br><b> Status:{{response.data}}</b><br>
+    </p>
+
+   
+    <script src="../controllers/delete.js"></script>
+</body>
+</html>

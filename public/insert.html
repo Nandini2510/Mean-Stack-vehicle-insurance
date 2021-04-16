@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+     <!-- <link rel="stylesheet" href='../styling/navigation.css'/> -->
+     <link rel="stylesheet" href='../styling/home.css'/>
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>
+     <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+</head>
+
+<body ng-app="insert" ng-controller='insertCtrl' ng-init="response=''">
+   
+    <header>
+        <div class="container">
+             <div id="branding">
+                 <h1><span class="highlight">Vehicle</span> Insurance</h1>
+             </div>
+             <nav>
+                 <ul>
+                     <li ><a href="home.html">Home</a></li>
+                     <li class="current"><a href="insert.html">Buy Policy</a></li>
+                     <li><a href="view.html">Display Policy</a></li>
+                     <li><a href="update.html">Renew Policy</a></li>
+                     <li><a href="delete.html">Delete Policy</a></li>
+                 </ul>
+             </nav>
+        </div>
+    </header>
+ 
+    <form ng-submit="insert()" >
+        <br><br>
+        
+        
+                <div class="container">
+        <label for="id" >Enter ID:</label>
+        <input type="text" id="id" ng-model="data.id" required/> <br><br>
+        <label for="name">Enter Owner Name:</label>
+        <input type="text" id="name" ng-model="data.name" required/><br> <br>
+        <label for="city">Enter Mobile Number:</label>
+        <input type="text" id="contact" ng-model="data.contact" required/><br><br>
+        <!-- <label for="list">Add items to list:</label> -->
+        
+        <div class="style">
+        Insurance for Car or Bike?<input type="text" id="date" ng-model="item.type"/><br><br>
+	    Company of Insurance:<input type="text" id="dest" ng-model="item.comp"/><br><br>
+        Term of Insurance:<input type="number" id="nob" ng-model="item.term"/>
+        </div>
+        <br><br>
+        <br><input type="submit" class="btn" value="Submit"/>
+        <!-- <button type="button" ng-click="add()" class="btn">Submit</button> -->
+    </div>
+    
+        
+        <!-- <label><b>List of items:</b></label><br>
+        <table class="table table-striped table-bordered table-hover">
+            <thead>
+             <th>Insurance for Car or Bike?</th>
+             <th>Company of Insurance</th>
+             <th>Term of Insurance</th>
+            </thead>
+            <tbody>
+             <tr ng-repeat="i in data.list">
+                <td>{{i.type}}</td>
+                <td>{{i.comp}}</td>
+                <td>{{i.term}}</td> 
+             </tr>
+            </tbody>
+        </table> -->
+    
+        
+    </form>
+
+    <p>
+        <br><b>Status:{{response.data}}</b>
+   </p>
+
+    <script src="../controllers/insert.js"></script>
+</body>
+</html>
